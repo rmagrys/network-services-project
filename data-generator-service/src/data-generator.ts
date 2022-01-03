@@ -87,7 +87,7 @@ export class DataGenerator {
     return data;
   }
 
-  private calculateValue(type: Types): String {
+  private calculateValue(type: Types): string {
     switch (type) {
       case Types.HUMIDITY:
         return Math.floor(Math.random() * 30 + 10).toString();
@@ -100,7 +100,7 @@ export class DataGenerator {
     }
   }
 
-  private calculateUnit(type: Types): String {
+  private calculateUnit(type: Types): string {
     switch (type) {
       case Types.HUMIDITY:
         return "%";

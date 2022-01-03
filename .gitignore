@@ -37,7 +37,10 @@ rabbitmq/lib
 Thumbs.db
 
 # Ignore built ts files
-dist/**/*
+**/dist/**/*
+data-consumer-service/dist/**/*
+data-generator-service/dist/**/*
+
 
 # ignore yarn.lock
 yarn.lock

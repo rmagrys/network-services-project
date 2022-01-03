@@ -50,3 +50,17 @@ services:
       - rabbitmq
     networks:
       - rabbit-network
+
+  data-frontend-service:
+    container_name: data-frontend
+    build: ./data-frontend
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - 3000:3000
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - data-consumer-service

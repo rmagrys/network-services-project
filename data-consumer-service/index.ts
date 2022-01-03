@@ -1,5 +1,4 @@
-import { DataConsumer } from "./src/data-consumer";
+import { App } from "./src/app";
 
-const dataConsumer: DataConsumer = new DataConsumer();
-
-dataConsumer.init();
+const app: App = new App();
+app.init().then(() => app.runDataConsumingAndSending());
