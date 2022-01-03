@@ -1,0 +1,5 @@
+export enum Types {
+  TEMPERATURE = "TEMPERATURE",
+  PRESSURE = "PRESSURE",
+  HUMIDITY = "HUMIDITY",
+}

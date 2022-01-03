@@ -1,0 +1,81 @@
+{
+  "rabbit_version": "3.8.3",
+  "rabbitmq_version": "3.8.3",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "htF8HjZ59a57gTwDCdSx0wHrrZpppF8n+Dx0YXFurdsPhs19",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    },
+    {
+      "name": "admin",
+      "password_hash": "htF8HjZ59a57gTwDCdSx0wHrrZpppF8n+Dx0YXFurdsPhs19",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    },
+    {
+      "name": "dataGenerator",
+      "password_hash": "htF8HjZ59a57gTwDCdSx0wHrrZpppF8n+Dx0YXFurdsPhs19",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    },
+    {
+      "name": "dataConsumer",
+      "password_hash": "htF8HjZ59a57gTwDCdSx0wHrrZpppF8n+Dx0YXFurdsPhs19",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "project-app-host"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "project-app-host",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "admin",
+      "vhost": "project-app-host",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "dataGenerator",
+      "vhost": "project-app-host",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "dataConsumer",
+      "vhost": "project-app-host",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "topic_permissions": [],
+  "parameters": [],
+  "global_parameters": [
+    {
+      "name": "cluster_name",
+      "value": "rabbit@08aa4e6e230e"
+    },
+    {
+      "name": "internal_cluster_id",
+      "value": "rabbitmq-cluster-id-N4pV8lf6qUKRzx_R-wHeEw"
+    }
+  ],
+  "policies": [],
+  "queues": [],
+  "exchanges": [],
+  "bindings": []
+}

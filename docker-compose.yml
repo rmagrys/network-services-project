@@ -1,0 +1,52 @@
+version: "3.3"
+
+networks:
+  rabbit-network:
+    driver: bridge
+
+services:
+  rabbitmq:
+    container_name: "rabbitmq"
+    tty: true
+    image: "bitnami/rabbitmq:latest"
+    ports:
+      - 15672:15672
+      - 15671:15671
+      - 5672:5672
+    volumes:
+      - ./config/rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:rw
+      - ./config/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:rw
+      - ./config/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
+    networks:
+      - rabbit-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  data-generator-service:
+    container_name: data-generator
+    build: ./data-generator-service
+    ports:
+      - 4000:4000
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    links:
+      - rabbitmq
+    networks:
+      - rabbit-network
+
+  data-consumer-service:
+    container_name: data-consumer
+    build: ./data-consumer-service
+    ports:
+      - 5000:5000
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    links:
+      - rabbitmq
+    networks:
+      - rabbit-network
