@@ -55,8 +55,8 @@ services:
     container_name: data-frontend
     build: ./data-frontend
     volumes:
-      - ".:/app"
       - "/app/node_modules"
+      - "./data-frontend:/app"
     ports:
       - 3000:3000
     stdin_open: true
@@ -64,3 +64,5 @@ services:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - data-consumer-service
+    networks:
+      - rabbit-network

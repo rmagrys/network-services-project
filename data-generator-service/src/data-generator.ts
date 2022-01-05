@@ -54,7 +54,7 @@ export class DataGenerator {
         Types.TEMPERATURE,
         Buffer.from(JSON.stringify(temperatureData))
       );
-    }, 2500);
+    }, 7000);
 
     setInterval(() => {
       const pressureData: Data = this.createRandomData(Types.PRESSURE);
@@ -63,7 +63,7 @@ export class DataGenerator {
         Types.PRESSURE,
         Buffer.from(JSON.stringify(pressureData))
       );
-    }, 3500);
+    }, 5000);
 
     setInterval(() => {
       const humidityData: Data = this.createRandomData(Types.HUMIDITY);
@@ -72,7 +72,7 @@ export class DataGenerator {
         Types.HUMIDITY,
         Buffer.from(JSON.stringify(humidityData))
       );
-    }, 4500);
+    }, 9000);
   }
 
   private createRandomData(type: Types): Data {

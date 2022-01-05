@@ -11,13 +11,23 @@ export class SocketController {
   constructor(port: number) {
     this.port = port;
     this.httpServer = createServer();
-    this.io = new ioServer(this.httpServer, {});
+    this.io = new ioServer(this.httpServer, {
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+        credentials: true,
+      },
+    });
   }
 
   public async init() {
     this.io.on("connection", (socket: Socket) => {
       log.info("Connection by socket.io set");
       socket.emit("Successfully connected to server");
+
+      socket.on("disconnect", () => {
+        console.log("disconnected");
+      });
     });
     log.info(`Server listening on port ${this.port}`);
     this.httpServer.listen(this.port);

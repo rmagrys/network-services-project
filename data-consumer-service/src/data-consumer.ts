@@ -43,24 +43,22 @@ export class DataConsumer {
   }
 
   public consumeData(sendingCallback: CallableFunction) {
-    log.info("Starting to consume data from RabbitMQ");
-
     this.channel.consume(Types.HUMIDITY, (message) => {
       log.info(message.content.toString());
       const data: Data = JSON.parse(message.content.toString());
-      sendingCallback(Types.HUMIDITY, data);
+      sendingCallback(data.type, data);
     });
 
     this.channel.consume(Types.PRESSURE, (message) => {
       log.info(message.content.toString());
       const data: Data = JSON.parse(message.content.toString());
-      sendingCallback(Types.PRESSURE, data);
+      sendingCallback(data.type, data);
     });
 
     this.channel.consume(Types.TEMPERATURE, (message) => {
       log.info(message.content.toString());
       const data: Data = JSON.parse(message.content.toString());
-      sendingCallback(Types.HUMIDITY, data);
+      sendingCallback(data.type, data);
     });
   }
 }
